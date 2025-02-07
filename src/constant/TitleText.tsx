@@ -1,0 +1,27 @@
+export const UNAUTHORIZED = "401";
+export const NOT_FOUND = "404";
+export const UNAUTHORIZED_TEXT =
+  "You do not have access to the requested page.";
+export const NOT_FOUND_TEXT = "The page you're trying to view does not exist.";
+export const BACK_TO_LOGIN = "Back to login";
+export const NO_DRIVER_FOUND = "No driver found";
+export const DRIVER_DETAILS = "Driver Details";
+export const CONSTRUCTORS_DETAILS = "Constructors Details";
+export const SUMMARY = "Summary";
+export const USER_DETAILS = "User Details";
+export const TITLE_SUB_TEXT = "Please enter your details below.";
+export const WIKIPEDIA_PROFILE = "Wikipedia Profile";
+export const DRIVERS = "Drivers";
+export const ID = "Id";
+export const NUMBER = "Number";
+export const CODE = "Code";
+export const GIVEN_NAME = "Given name";
+export const FAMILY_NAME = "Family name";
+export const DOB = "Date of Birth";
+export const NATIONALITY = "Nationality";
+export const CODE_TEXT = "Code";
+export const DRIVER_ID = "Driver Id";
+export const POINTS = "Points";
+export const NAME = "Name";
+export const CONSTRUCTOR_ID = "Constructor ID";
+export const MORE_INFO = "More Info";

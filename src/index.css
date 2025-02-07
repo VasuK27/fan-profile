@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  user-select: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: "Poppins" !important;
+}
+
+:root {
+  --lightPurple: #dd5e60;
+  --errorDarkRed: #c33232;
+  --white: #fff;
+  --silver: #bdbdbd50;
+  --borderGray: #DFDFDF;
+  --lightBlack: #313131;
+  --textGray: #45486a;
+  --lightPink: #D5636224;
+  --lightGray: #828282;
+  --borderGray: #EBEBEB;
+  --lavenderGray: #CBCAD7;
+}
+
+::-webkit-scrollbar {
+  display: none !important
+}
+
+.MuiFormHelperText-root {
+  color: var(--errorDarkRed) !important;
+  font-weight: 600 !important;
+  margin-left: 0px !important;
+}
+
+.MuiTooltip-tooltip {
+  background-color: var(--lightPurple) !important;
+  color: "white",
+}
+
+.MuiTooltip-arrow {
+  color: var(--lightPurple) !important
+}
