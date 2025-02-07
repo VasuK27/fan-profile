@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation Instructions:
 
-- **Node Version**: >=6.9.0
+- **Node Version**: ^16.7.13
 
 ## Project run Instructions:
 
