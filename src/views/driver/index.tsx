@@ -75,6 +75,11 @@ const Driver: FC = () => {
     [dispatch]
   );
 
+  // Reset page when searchTerm changes
+  useEffect(() => {
+    setPage(1);
+  }, [searchTerm]);
+
   // Rendering driver details inside a card
   const renderDriverDetails = (driver: DriverData) => {
     const driverDetails = [
@@ -201,7 +206,10 @@ const Driver: FC = () => {
       <Search
         placeholder={SEARCH_BY_NAME}
         searchValue={searchTerm}
-        handleSearchOnChange={(e) => setSearchTerm(e.target.value)}
+        handleSearchOnChange={(e) => {
+          setSearchTerm(e.target.value);
+          setPage(1); // Reset page to 1 on new search
+        }}
       />
 
       {/* Rendering filtered drivers or loading state */}
