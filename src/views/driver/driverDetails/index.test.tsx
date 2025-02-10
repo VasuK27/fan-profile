@@ -13,7 +13,7 @@ import {
   POINTS,
   USER_DETAILS,
 } from "constant/TitleText";
-import { renderWithProviders } from "../../../utils/renderWithProviders";
+import { renderWithProviders } from "utils/RenderWithProviders";
 import { EMAIL } from "constant/InputLabel";
 
 // Helper function to check text presence

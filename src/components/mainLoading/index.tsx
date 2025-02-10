@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import React from "react";
+import { FC } from "react";
 import { CircleBox, LoadingBox } from "./index.style";
 import { MainLoadingProps } from "interfaces/custom";
-import loading from "../../assets/gifs/loading.gif";
+import loading from "assets/gifs/loading.gif";
 
-const MainLoading: React.FC<MainLoadingProps> = ({
+const MainLoading: FC<MainLoadingProps> = ({
   inline = true,
   isSmallLoading = false,
   className = "",

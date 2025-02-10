@@ -1,11 +1,11 @@
-import React from "react";
+import { forwardRef } from "react";
 import { createRoot } from "react-dom/client";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 
 type NotificationSeverity = "success" | "error" | "warning";
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
   ref
 ) {

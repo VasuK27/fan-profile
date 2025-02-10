@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import Modal from ".";
-import { renderWithProviders } from "utils/renderWithProviders";
+import { renderWithProviders } from "utils/RenderWithProviders";
 
 const handleCloseMock = jest.fn();
 

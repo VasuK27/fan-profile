@@ -1,11 +1,10 @@
-import React from "react";
+import { FC } from "react";
 import { Field, ErrorMessage } from "formik";
 import { FormControl, FormHelperText } from "@mui/material";
 import { RequiredStar, StyledTextField } from "./input.style";
 import { InputProps } from "interfaces/custom";
-import { Label } from "@mui/icons-material";
 
-const Input: React.FC<InputProps> = ({
+const Input: FC<InputProps> = ({
   name,
   label,
   type = "text",
@@ -26,7 +25,7 @@ const Input: React.FC<InputProps> = ({
               <RequiredStar>*</RequiredStar>
             </>
           ) : (
-            <Label>{label}</Label>
+            <>{label}</>
           )
         }
         placeholder={placeholder}

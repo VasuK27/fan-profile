@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import React from "react";
+import { FC } from "react";
 import MainLoading from "components/mainLoading";
 import { LoadingProps } from "interfaces/custom";
 
-const Loading: React.FC<LoadingProps> = ({
+const Loading: FC<LoadingProps> = ({
   display = "flex",
   alignItems = "center",
   justifyContent = "center",

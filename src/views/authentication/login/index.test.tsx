@@ -1,5 +1,5 @@
 import { fireEvent, screen } from "@testing-library/react";
-import { renderWithProviders } from "utils/renderWithProviders";
+import { renderWithProviders } from "utils/RenderWithProviders";
 import Login from ".";
 import { TITLE_SUB_TEXT, USER_DETAILS } from "constant/TitleText";
 import { SUBMIT } from "constant/ButtonLabel";

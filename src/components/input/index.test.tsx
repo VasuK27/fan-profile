@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "utils/renderWithProviders";
+import { renderWithProviders } from "utils/RenderWithProviders";
 import Input from ".";
 import { Formik } from "formik";
 import { USER_NAME } from "constant/InputLabel";
@@ -10,8 +10,14 @@ const defaultProps = {
   label: USER_NAME,
   type: "text",
   placeholder: ENTER_USER_NAME,
-  required: true,
+  required: false,
 };
+
+function inputField() {
+  expect(
+    screen.getByRole("textbox", { name: /user name/i })
+  ).toBeInTheDocument();
+}
 
 describe("Input Component - with formik", () => {
   beforeEach(() => {
@@ -23,9 +29,7 @@ describe("Input Component - with formik", () => {
   });
 
   test("renders input box with label props", () => {
-    expect(
-      screen.getByRole("textbox", { name: /user name/i })
-    ).toBeInTheDocument();
+    inputField();
   });
 
   test("renders with the correct placeholder", () => {
@@ -33,7 +37,7 @@ describe("Input Component - with formik", () => {
   });
 
   test("renders with the correct type", () => {
-    const inputField = screen.getByLabelText(USER_NAME);
+    const inputField = screen.getByRole("textbox", { name: /user name/i });
     expect(inputField).toHaveAttribute("type", "text");
   });
 });

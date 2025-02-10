@@ -1,10 +1,10 @@
-import React from "react";
+import { FC } from "react";
 import { CustomButtonProps } from "interfaces/custom";
 import { StyledButton } from "./index.style";
 import { Box } from "@mui/material";
 import MainLoading from "components/mainLoading";
 
-const Button: React.FC<CustomButtonProps> = ({
+const Button: FC<CustomButtonProps> = ({
   variant = "contained",
   label,
   type = "button",

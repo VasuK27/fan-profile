@@ -20,7 +20,7 @@ import { Constructor, DetailRowProps, DriverStanding } from "interfaces/global";
 import { FC, ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "utils/GetCurrentUser";
-import { RootState } from "../../../redux/store";
+import { RootState } from "redux/store";
 import { WikipediaButton } from "../index.style";
 import { TitleText } from "./index.style";
 
@@ -45,10 +45,11 @@ const userDetails = [
 const DriverDetails: FC = () => {
   // Fetching driver and standings details and loading from the Redux store
   const driverDetails = useSelector(
-    (state: RootState) => state.driverDetails.driverDetails
+    (state: RootState) => state?.driverDetails?.driverDetails
   );
   const standingsDetails: DriverStanding | null = useSelector(
-    (state: RootState) => state.driverDetails.standings as DriverStanding | null
+    (state: RootState) =>
+      state?.driverDetails?.standings as DriverStanding | null
   );
   const loading = useSelector((state: RootState) => state.driverList.isLoading);
 

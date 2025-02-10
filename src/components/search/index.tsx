@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { SearchProps } from "interfaces/custom";
 import {
   Search as MuiSearch,
@@ -8,7 +8,7 @@ import {
 } from "./index.style";
 import { SEARCH } from "constant/Placeholder";
 
-const Search: React.FC<SearchProps> = ({
+const Search: FC<SearchProps> = ({
   searchValue,
   handleSearchOnChange,
   disabled,

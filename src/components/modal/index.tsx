@@ -1,5 +1,5 @@
-import React from "react";
-import { Typography, Modal as MuiModal, Grid2, Box } from "@mui/material";
+import { FC } from "react";
+import { Typography, Modal as MuiModal, Grid2 } from "@mui/material";
 import { ReusableModalProps } from "interfaces/custom";
 import {
   ChildrenBox,
@@ -10,7 +10,7 @@ import {
 } from "./index.style";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-const Modal: React.FC<ReusableModalProps> = ({
+const Modal: FC<ReusableModalProps> = ({
   open,
   handleClose,
   label,

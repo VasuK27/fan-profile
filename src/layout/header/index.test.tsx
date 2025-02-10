@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../utils/renderWithProviders";
+import { renderWithProviders } from "utils/RenderWithProviders";
 import Header from ".";
 import { getCurrentUser } from "utils/GetCurrentUser";
 

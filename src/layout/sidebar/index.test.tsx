@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders } from "../../utils/renderWithProviders";
+import { renderWithProviders } from "utils/RenderWithProviders";
 import Sidebar from ".";
 import { useNavigate } from "react-router-dom";
 import { setCurrentUser } from "utils/SetCurrentUser";

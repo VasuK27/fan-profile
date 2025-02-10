@@ -1,5 +1,5 @@
 import { ButtonProps } from "@mui/material";
-import { ChangeEvent, CSSProperties } from "react";
+import { ChangeEvent, CSSProperties, ReactNode } from "react";
 
 export interface ErrorMessageProps {
   name: string;
@@ -50,7 +50,7 @@ export interface ReusableModalProps {
   open: boolean;
   handleClose: () => void;
   label?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   buttonText?: string;
   onButtonClick?: () => void;
   isGrayBlock?: boolean;

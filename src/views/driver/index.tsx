@@ -44,7 +44,6 @@ const Driver: FC = () => {
   const { data, isLoading } = useSelector(
     (state: RootState) => state.driverList
   );
-  const state = useSelector((state: RootState) => state);
   const driversData = data?.MRData?.DriverTable?.Drivers ?? [];
 
   // Filtering drivers based on the search term
@@ -111,8 +110,9 @@ const Driver: FC = () => {
               <StyledMenuIconButton
                 color="inherit"
                 aria-label="toggle drawer"
-                onClick={() => handleViewDetails(driver)}
                 edge="start"
+                data-testid="view-icon"
+                onClick={() => handleViewDetails(driver)}
               >
                 <VisibilityOutlinedIcon fontSize="small" />
               </StyledMenuIconButton>
@@ -162,7 +162,7 @@ const Driver: FC = () => {
               </IconButton>
               <Typography fontSize="14px" color="var(--lightGray)">
                 <WikipediaLink
-                  data-testId="WikipediaLink"
+                  data-testid="wikipedia_link"
                   href={driver.url}
                   target="_blank"
                   rel="noopener noreferrer"

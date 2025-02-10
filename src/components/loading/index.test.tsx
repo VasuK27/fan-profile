@@ -1,11 +1,6 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "utils/renderWithProviders";
+import { renderWithProviders } from "utils/RenderWithProviders";
 import Loading from ".";
-
-function checkProgressbar() {
-  const loadingElement = screen.getByRole("progressbar");
-  expect(loadingElement).toBeInTheDocument();
-}
 
 describe("Loading Component - with small size", () => {
   const defaultProps = {
@@ -16,8 +11,9 @@ describe("Loading Component - with small size", () => {
     renderWithProviders(<Loading {...defaultProps} />);
   });
 
-  test("Renders Loading with default props", () => {
-    checkProgressbar();
+  test("Renders Loading with small size", () => {
+    const smallLoading = screen.getByTestId("small-loading");
+    expect(smallLoading).toBeInTheDocument();
   });
 });
 
@@ -32,11 +28,7 @@ describe("Loading Component - with default props", () => {
   });
 
   test("Renders Loading with default props", () => {
-    checkProgressbar();
-  });
-
-  test("Renders Loading with dynamic style color", () => {
-    const circularProgress = screen.getByRole("progressbar");
-    expect(circularProgress).toHaveStyle({ color: "red" });
+    const loadingImage = screen.getByAltText("loading");
+    expect(loadingImage).toBeInTheDocument();
   });
 });

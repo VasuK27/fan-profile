@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../utils/renderWithProviders";
+import { renderWithProviders } from "utils/RenderWithProviders";
 import Button from ".";
 import { CustomButtonProps } from "interfaces/custom";
 import { WIKIPEDIA_PROFILE } from "constant/TitleText";
