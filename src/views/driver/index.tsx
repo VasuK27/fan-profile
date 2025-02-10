@@ -218,7 +218,7 @@ const Driver: FC = () => {
       </Grid2>
 
       {/* Pagination for displaying driver pages */}
-      {totalPages > 1 && !isLoading && (
+      {displayedDrivers.length !== 0 && !isLoading && (
         <Box display="flex" justifyContent="center" mt={4}>
           <StyledPagination
             count={totalPages}
