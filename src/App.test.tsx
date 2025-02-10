@@ -1,14 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import userEvent from "@testing-library/user-event";
+import { USER_DETAILS } from "constant/TitleText";
 describe("App component", () => {
-  test("renders Login page on /login route", () => {
+  test("renders Login page on /login route", async () => {
     render(<App />);
-    setTimeout(() => {
-      const loginLink = screen.getByRole("link", { name: /Login/i });
-      expect(loginLink).toBeInTheDocument();
-      userEvent.click(loginLink);
-      expect(screen.getByText("Login")).toBeInTheDocument();
-    }, 10);
+    const tileText = await screen.findByText(USER_DETAILS);
+    expect(tileText).toBeInTheDocument();
   });
 });
