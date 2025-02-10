@@ -1,15 +1,3 @@
-export interface DriverState {
-  isLoading: boolean;
-  data: any | null;
-  isError: boolean;
-}
-
-export interface DriverStanding {
-  Driver: {
-    driverId: string;
-  };
-}
-
 export interface DriverData {
   driverId: string;
   givenName: string;
@@ -19,6 +7,28 @@ export interface DriverData {
   code: string;
   dateOfBirth: string;
   url: string;
+}
+export interface DriverTable {
+  Drivers: DriverData[];
+}
+
+export interface MRData {
+  DriverTable: DriverTable;
+}
+
+export interface DriverListResponse {
+  MRData: MRData;
+}
+export interface DriverState {
+  isLoading: boolean;
+  data: DriverListResponse | null;
+  isError: boolean;
+}
+
+export interface DriverStanding {
+  Driver: {
+    driverId: string;
+  };
 }
 
 export interface DriverDetailsState {

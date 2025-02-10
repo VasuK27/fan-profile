@@ -3,13 +3,13 @@ import { render, RenderOptions } from "@testing-library/react";
 import { AllTheProvidersProps } from "interfaces/global";
 import { ReactElement } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import { store } from "redux/store";
 
 const AllTheProviders = ({ children, customStore }: AllTheProvidersProps) => {
   return (
     <Provider store={customStore || store}>
-      <BrowserRouter>{children}</BrowserRouter>
+      <MemoryRouter>{children}</MemoryRouter>
     </Provider>
   );
 };

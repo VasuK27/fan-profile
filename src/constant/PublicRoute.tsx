@@ -1,11 +1,9 @@
-import { lazy } from "react";
 import { loginRoute } from "./RoutesEndPoint";
-
-const home = lazy(() => import("views/authentication/login"));
+import Login from "views/authentication/login";
 
 export const publicRoute = [
   {
     to: loginRoute.LOGIN_ROUTE,
-    Component: home,
+    Component: Login,
   },
 ];

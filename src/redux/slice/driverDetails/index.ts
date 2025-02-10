@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { driverApiEndPoint } from "constant/ApiEndPoint";
-import { DriverDetailsState } from "interfaces/redux";
+import { DriverDetailsState, DriverStanding } from "interfaces/redux";
 import { getResponse } from "utils/Response";
 
 // Initial state
@@ -20,8 +20,8 @@ export const fetchDriverStandings = createAsyncThunk(
     });
     const driverStanding =
       response.response.data.MRData.StandingsTable.StandingsLists.flatMap(
-        (list: { DriverStandings: any[] }) => list.DriverStandings
-      ).find((d: any) => d.Driver.driverId === driverId);
+        (list: { DriverStandings: DriverStanding[] }) => list.DriverStandings
+      ).find((d: DriverStanding) => d.Driver.driverId === driverId);
     return driverStanding || null;
   }
 );

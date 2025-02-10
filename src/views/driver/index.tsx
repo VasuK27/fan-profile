@@ -32,26 +32,42 @@ import {
   WikipediaButton,
   WikipediaLink,
 } from "./index.style";
+import debounce from "debounce";
 
 const Driver: FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filteredDrivers, setFilteredDrivers] = useState<DriverData[]>([]);
   const [page, setPage] = useState<number>(1);
   const [open, setOpen] = useState(false);
   const driversPerPage = 8;
   const dispatch = useDispatch<AppDispatch>();
 
-  // Fetching driver and standings details and loading from the Redux store
+  // Fetching driver and standings details from Redux store
   const { data, isLoading } = useSelector(
     (state: RootState) => state.driverList
   );
   const driversData = data?.MRData?.DriverTable?.Drivers ?? [];
 
-  // Filtering drivers based on the search term
-  const filteredDrivers = driversData.filter((driver: DriverData) =>
-    `${driver.givenName} ${driver.familyName} ${driver.nationality}`
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase())
+  // Function to filter drivers based on search term
+  const debouncedFilter = useCallback(
+    debounce((searchValue) => {
+      const filtered = driversData.filter((driver: DriverData) =>
+        `${driver.givenName} ${driver.familyName} ${driver.nationality}`
+          .toLowerCase()
+          .includes(searchValue.toLowerCase())
+      );
+      setFilteredDrivers(filtered);
+      setPage(1);
+    }, 500),
+    [driversData]
   );
+
+  // Handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    debouncedFilter(value);
+  };
 
   // Pagination logic
   const totalPages = Math.ceil(filteredDrivers.length / driversPerPage);
@@ -60,10 +76,15 @@ const Driver: FC = () => {
     page * driversPerPage
   );
 
-  // Fetching driver list on component mount
+  // Fetch driver list on component mount
   useEffect(() => {
     dispatch(fetchDriverList());
   }, [dispatch]);
+
+  // Update filtered drivers initially or when driversData updates
+  useEffect(() => {
+    setFilteredDrivers(driversData);
+  }, [driversData]);
 
   // Function to handle opening the details modal for a selected driver
   const handleViewDetails = useCallback(
@@ -74,11 +95,6 @@ const Driver: FC = () => {
     },
     [dispatch]
   );
-
-  // Reset page when searchTerm changes
-  useEffect(() => {
-    setPage(1);
-  }, [searchTerm]);
 
   // Rendering driver details inside a card
   const renderDriverDetails = (driver: DriverData) => {
@@ -206,10 +222,7 @@ const Driver: FC = () => {
       <Search
         placeholder={SEARCH_BY_NAME}
         searchValue={searchTerm}
-        handleSearchOnChange={(e) => {
-          setSearchTerm(e.target.value);
-          setPage(1); // Reset page to 1 on new search
-        }}
+        handleSearchOnChange={handleSearchChange}
       />
 
       {/* Rendering filtered drivers or loading state */}

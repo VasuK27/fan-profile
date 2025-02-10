@@ -26,7 +26,7 @@ export const StyledTextField = styled(TextField)({
     },
   },
   "& .MuiInputLabel-root": {
-    color: "var(--lightBlack)",
+    color: "var(--lightBlack) !important",
   },
 });
 

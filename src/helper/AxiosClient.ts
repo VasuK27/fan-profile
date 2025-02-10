@@ -27,7 +27,7 @@ export function unAuthorized(navigate: Function): void {
 
 export async function getRequest<T>(
   URL: string,
-  params: Record<string, any>,
+  params: Record<string, unknown>,
   navigate: Function
 ): Promise<ApiResponse<T>> {
   try {

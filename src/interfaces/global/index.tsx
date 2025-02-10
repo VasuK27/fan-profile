@@ -1,6 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { ReactNode } from "react";
 
+export interface GetResponseParams {
+  apiEndPoint: string;
+  queryString?: string;
+  navigate?: any;
+  isToken?: boolean;
+}
+
 export interface SidebarProps {
   open: boolean;
 }

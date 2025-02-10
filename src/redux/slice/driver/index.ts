@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { driverApiEndPoint } from "constant/ApiEndPoint";
-import { DriverState } from "interfaces/redux";
+import { DriverListResponse, DriverState } from "interfaces/redux";
 import { getResponse } from "utils/Response";
 
 // Define async thunk
-export const fetchDriverList = createAsyncThunk<any>(
+export const fetchDriverList = createAsyncThunk<DriverListResponse>(
   "fetchDriverList",
   async () => {
     const response = await getResponse({

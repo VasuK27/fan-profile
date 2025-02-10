@@ -1,16 +1,7 @@
 import { SOMETHING_WENT_WRONG } from "constant/ErrorMessages";
 import { getRequest } from "helper/AxiosClient";
 import { errorNotification } from "helper/Notification";
-
-/**
- * Types for function parameters
- */
-export interface GetResponseParams {
-  apiEndPoint: string;
-  queryString?: string;
-  navigate?: any;
-  isToken?: boolean;
-}
+import { GetResponseParams } from "interfaces/global";
 
 /**
  * Fetches data from an endpoint with optional query parameters.

@@ -21,6 +21,7 @@ import {
   SidebarItemButton,
   StyledDrawer,
 } from "./index.style";
+import { loginRoute } from "constant/RoutesEndPoint";
 
 const Sidebar = ({ open }: SidebarProps) => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Sidebar = ({ open }: SidebarProps) => {
   // Handle the logout action by clearing the current user and navigating to the login page
   const handleLogout = () => {
     setCurrentUser(null);
-    navigate("/");
+    navigate(loginRoute.LOGIN_ROUTE);
   };
 
   return (
