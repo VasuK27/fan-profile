@@ -64,7 +64,6 @@
     "react/prop-types": 2,
     "space-before-blocks": 2,
     "space-in-parens": 2,
-    "spaced-comment": [2, "always"],
     "strict": 1,
     "valid-typeof": 2,
     "vars-on-top": 2
