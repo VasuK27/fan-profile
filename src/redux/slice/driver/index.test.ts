@@ -14,7 +14,13 @@ describe("driverSlice", () => {
   beforeEach(() => {
     initialState = {
       isLoading: false,
-      data: [],
+      data: {
+        MRData: {
+          DriverTable: {
+            Drivers: [],
+          },
+        },
+      },
       error: "",
     };
   });

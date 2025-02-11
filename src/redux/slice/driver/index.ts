@@ -1,17 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { driverApiEndPoint } from "constant/ApiEndPoint";
-import { DriverState } from "interfaces/redux";
+import { DriverListResponse, DriverState } from "interfaces/redux";
 import { getResponse } from "utils/Response";
 
 // Initial state
 const initialState: DriverState = {
   isLoading: false,
-  data: [],
+  data: {
+    MRData: {
+      DriverTable: {
+        Drivers: [],
+      },
+    },
+  },
   error: "",
 };
 
 // Async thunk to fetch standings data
-export const fetchDriverList = createAsyncThunk(
+export const fetchDriverList = createAsyncThunk<DriverListResponse>(
   "fetchDriverList",
   async (_, { rejectWithValue }) => {
     try {
