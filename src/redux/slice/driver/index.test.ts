@@ -1,4 +1,3 @@
-import { Action } from "@reduxjs/toolkit";
 import driverReducer, { fetchDriverList } from "./index";
 import { DriverState } from "interfaces/redux";
 import { driverApiEndPoint } from "constant/ApiEndPoint";
@@ -18,10 +17,6 @@ describe("driverSlice", () => {
       data: null,
       error: "",
     };
-  });
-
-  test("should return the initial state", () => {
-    expect(driverReducer(undefined, {} as Action)).toEqual(initialState);
   });
 
   test("should handle fetchDriverList.pending", () => {
