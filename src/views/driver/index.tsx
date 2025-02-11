@@ -242,12 +242,7 @@ const Driver: FC = () => {
       )}
 
       {/* Modal to display driver details */}
-      <Modal
-        open={open}
-        handleClose={() => setOpen(false)}
-        label={SUMMARY}
-        buttonText="Close"
-      >
+      <Modal open={open} handleClose={() => setOpen(false)} label={SUMMARY}>
         <DriverDetails />
       </Modal>
     </Box>
