@@ -1,6 +1,5 @@
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Box, Grid2, IconButton, Typography } from "@mui/material";
-import MainLoading from "components/mainLoading";
 import Modal from "components/modal";
 import Search from "components/search";
 import { SEARCH_BY_NAME } from "constant/Placeholder";
@@ -15,7 +14,7 @@ import {
   WIKIPEDIA_PROFILE,
 } from "constant/TitleText";
 import { DriverData } from "interfaces/redux";
-import { FC, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, FC, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "redux/store";
 import { fetchDriverList } from "../../redux/slice/driver";
@@ -28,11 +27,11 @@ import {
   ChipText,
   StyledMenuIconButton,
   StyledPagination,
-  TextAndLoading,
   WikipediaButton,
   WikipediaLink,
 } from "./index.style";
 import debounce from "debounce";
+import ConditionalContent from "components/conditionalContent";
 
 const Driver: FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -63,7 +62,7 @@ const Driver: FC = () => {
   );
 
   // Handle search input change
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
     debouncedFilter(value);
@@ -98,11 +97,13 @@ const Driver: FC = () => {
 
   // Rendering driver details inside a card
   const renderDriverDetails = (driver: DriverData) => {
+    const { familyName, driverId, permanentNumber, code } = driver;
+
     const driverDetails = [
-      { label: FAMILY_NAME, value: driver?.familyName || "-" },
-      { label: ID, value: driver?.driverId || "-" },
-      { label: NUMBER, value: driver?.permanentNumber || "-" },
-      { label: CODE, value: driver?.code || "-" },
+      { label: FAMILY_NAME, value: familyName || "-" },
+      { label: ID, value: driverId || "-" },
+      { label: NUMBER, value: permanentNumber || "-" },
+      { label: CODE, value: code || "-" },
     ];
 
     return (
@@ -198,21 +199,6 @@ const Driver: FC = () => {
     );
   };
 
-  // Conditionally rendering content based on loading state or available data
-  const renderContent = () => {
-    if (isLoading) {
-      return (
-        <TextAndLoading>
-          <MainLoading />
-        </TextAndLoading>
-      );
-    }
-    if (displayedDrivers.length === 0 && !isLoading) {
-      return <TextAndLoading>{NO_DRIVER_FOUND}</TextAndLoading>;
-    }
-    return displayedDrivers.map(renderDriverDetails);
-  };
-
   return (
     <Box p={3}>
       <Typography mb={2} fontWeight={600} fontSize="20px">
@@ -227,7 +213,12 @@ const Driver: FC = () => {
 
       {/* Rendering filtered drivers or loading state */}
       <Grid2 container spacing={3} mt={3}>
-        {renderContent()}
+        <ConditionalContent
+          isLoading={isLoading}
+          data={displayedDrivers}
+          noDataMessage={NO_DRIVER_FOUND}
+          renderItem={(driver) => renderDriverDetails(driver)}
+        />
       </Grid2>
 
       {/* Pagination for displaying driver pages */}

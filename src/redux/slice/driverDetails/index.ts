@@ -28,15 +28,11 @@ export const fetchDriverStandings = createAsyncThunk(
 
 // Create the slice
 const driverSlice = createSlice({
-  name: "driver",
+  name: "driverDetails",
   initialState,
   reducers: {
     setDriverDetails: (state, action) => {
       state.driverDetails = action.payload;
-    },
-    clearDriverDetails: (state) => {
-      state.driverDetails = null;
-      state.standings = null;
     },
   },
   extraReducers: (builder) => {
@@ -56,6 +52,6 @@ const driverSlice = createSlice({
   },
 });
 
-export const { setDriverDetails, clearDriverDetails } = driverSlice.actions;
+export const { setDriverDetails } = driverSlice.actions;
 
 export default driverSlice.reducer;

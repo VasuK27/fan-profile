@@ -3,46 +3,59 @@ import { driverApiEndPoint } from "constant/ApiEndPoint";
 import { DriverListResponse, DriverState } from "interfaces/redux";
 import { getResponse } from "utils/Response";
 
-// Define async thunk
+// Initial state
+const initialState: DriverState = {
+  isLoading: false,
+  data: {
+    MRData: {
+      DriverTable: {
+        Drivers: [],
+      },
+    },
+  },
+  error: "",
+};
+
+// Async thunk to fetch standings data
 export const fetchDriverList = createAsyncThunk<DriverListResponse>(
   "fetchDriverList",
-  async () => {
-    const response = await getResponse({
-      apiEndPoint: driverApiEndPoint.GET_DRIVER_LIST,
-    });
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await getResponse({
+        apiEndPoint: driverApiEndPoint.GET_DRIVER_LIST,
+      });
 
-    const structuredData = {
-      MRData: {
-        DriverTable: {
-          Drivers: response.response.data.MRData.DriverTable.Drivers,
+      return {
+        MRData: {
+          DriverTable: {
+            Drivers: response.response.data.MRData.DriverTable.Drivers,
+          },
         },
-      },
-    };
-
-    return structuredData;
+      };
+    } catch (error: any) {
+      return rejectWithValue(error.message || "Failed to fetch driver data");
+    }
   }
 );
 
 const driverSlice = createSlice({
   name: "driverList",
-  initialState: {
-    isLoading: false,
-    data: null,
-    isError: false,
-  } as DriverState,
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchDriverList.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(fetchDriverList.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.data = action.payload;
-    });
-    builder.addCase(fetchDriverList.rejected, (state) => {
-      state.isError = true;
-      state.isLoading = false;
-    });
+    builder
+      .addCase(fetchDriverList.pending, (state) => {
+        state.isLoading = true;
+        state.error = "";
+      })
+      .addCase(fetchDriverList.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data = action.payload;
+      })
+      .addCase(fetchDriverList.rejected, (state, action) => {
+        state.error = (action.payload as string) || "Failed to fetch driver";
+        state.isLoading = false;
+      });
   },
 });
 

@@ -19,11 +19,6 @@ export interface Constructor {
   url: string;
 }
 
-export interface DetailRowProps {
-  title: string;
-  content: string | ReactNode;
-}
-
 export interface DriverStanding {
   position: string;
   points: string;

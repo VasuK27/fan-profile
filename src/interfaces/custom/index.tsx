@@ -64,3 +64,16 @@ export interface InputProps {
   placeholder?: string;
   required?: boolean;
 }
+
+export interface ConditionalContentProps<T> {
+  isLoading: boolean;
+  data: T[];
+  loadingComponent?: ReactNode;
+  noDataMessage: string;
+  renderItem: (item: T, index: number) => ReactNode;
+}
+
+export interface TitleAndContentProps {
+  title: string;
+  content: string | ReactNode;
+}

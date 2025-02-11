@@ -44,9 +44,8 @@ export async function getRequest<T>(
         errors: axiosError.message,
         errormessage: axiosError.response.data as string, // Ensure type safety
       };
-    } else {
-      errorNotification(axiosError.message);
-      return { type: 0, errors: axiosError.message };
     }
+    errorNotification(axiosError.message);
+    return { type: 0, errors: axiosError.message };
   }
 }

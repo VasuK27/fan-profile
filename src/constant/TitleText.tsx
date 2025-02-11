@@ -25,3 +25,4 @@ export const POINTS = "Points";
 export const NAME = "Name";
 export const CONSTRUCTOR_ID = "Constructor ID";
 export const MORE_INFO = "More Info";
+export const LOGOUT = "Logout";

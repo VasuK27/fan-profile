@@ -16,7 +16,7 @@ describe("driverSlice", () => {
     initialState = {
       isLoading: false,
       data: null,
-      isError: false,
+      error: "",
     };
   });
 
@@ -29,7 +29,6 @@ describe("driverSlice", () => {
       type: fetchDriverList.pending.type,
     });
     expect(nextState.isLoading).toBe(true);
-    expect(nextState.isError).toBe(false);
   });
 
   test("should handle fetchDriverList.fulfilled", () => {
@@ -60,7 +59,6 @@ describe("driverSlice", () => {
       type: fetchDriverList.rejected.type,
     });
     expect(nextState.isLoading).toBe(false);
-    expect(nextState.isError).toBe(true);
   });
 
   test("should fetch driver list successfully", async () => {

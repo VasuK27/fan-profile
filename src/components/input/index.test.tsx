@@ -30,6 +30,8 @@ describe("Input Component - with formik", () => {
 
   test("renders input box with label props", () => {
     inputField();
+    const asterisk = screen.queryByText("*");
+    expect(asterisk).not.toBeInTheDocument();
   });
 
   test("renders with the correct placeholder", () => {
@@ -39,5 +41,21 @@ describe("Input Component - with formik", () => {
   test("renders with the correct type", () => {
     const inputField = screen.getByRole("textbox", { name: /user name/i });
     expect(inputField).toHaveAttribute("type", "text");
+  });
+});
+
+describe("Input Component - with formik", () => {
+  beforeEach(() => {
+    renderWithProviders(
+      <Formik initialValues={{ username: "" }} onSubmit={() => {}}>
+        <Input {...defaultProps} required />
+      </Formik>
+    );
+  });
+
+  test("renders an asterisk when required", () => {
+    inputField();
+    const asterisk = screen.getAllByText("*");
+    expect(asterisk[0]).toBeInTheDocument();
   });
 });

@@ -18,3 +18,5 @@ export const driverList = [
     url: "https://en.wikipedia.org/wiki/Fernando_Alonso",
   },
 ];
+
+export const driverDummyData = ["Item 1", "Item 2"];

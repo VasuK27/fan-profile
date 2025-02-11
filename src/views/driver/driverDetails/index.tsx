@@ -1,4 +1,4 @@
-import { Box, Grid2, IconButton, Typography } from "@mui/material";
+import { Box, Grid2, IconButton } from "@mui/material";
 import MainLoading from "components/mainLoading";
 import { EMAIL } from "constant/InputLabel";
 import {
@@ -16,25 +16,16 @@ import {
   POINTS,
   USER_DETAILS,
 } from "constant/TitleText";
-import { Constructor, DetailRowProps, DriverStanding } from "interfaces/global";
+import { Constructor, DriverStanding } from "interfaces/global";
 import { FC, ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "utils/GetCurrentUser";
 import { RootState } from "redux/store";
 import { WikipediaButton } from "../index.style";
 import { TitleText } from "./index.style";
+import TitleAndContent from "components/titleAndContent";
 
 // Reusable component to display individual detail rows
-const DetailRow: FC<DetailRowProps> = ({ title, content }) => (
-  <Box mb={2}>
-    <Typography fontSize="14px" fontWeight={500} color="var(--lightGray)">
-      {title}
-    </Typography>
-    <Typography fontSize="16px" color="var(--textGray)" fontWeight={600}>
-      {content}
-    </Typography>
-  </Box>
-);
 
 // Defining user details using current user information
 const userDetails = [
@@ -57,7 +48,7 @@ const DriverDetails: FC = () => {
   const renderDetails = (details: { title: string; content: ReactNode }[]) =>
     details.map((item, index) => (
       <Grid2 size={{ xs: 6, sm: 4, lg: 3 }} key={index}>
-        <DetailRow title={item.title} content={item.content} />
+        <TitleAndContent title={item.title} content={item.content} />
       </Grid2>
     ));
 

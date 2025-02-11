@@ -9,9 +9,11 @@ jest.mock("utils/GetCurrentUser", () => ({
 }));
 
 // Mock Header component
-jest.mock("./header", () => () => (
-  <div data-testid="header-component">Header</div>
-));
+jest.mock("./header", () => {
+  const MockHeader = () => <div data-testid="header-component">Header</div>;
+  MockHeader.displayName = "MockHeader";
+  return MockHeader;
+});
 
 describe("Layout Component", () => {
   test("should render Header when user is logged in", () => {

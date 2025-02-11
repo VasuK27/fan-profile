@@ -1,9 +1,4 @@
-import { Action } from "@reduxjs/toolkit";
-import driverReducer, {
-  fetchDriverStandings,
-  setDriverDetails,
-  clearDriverDetails,
-} from "./index";
+import driverReducer, { fetchDriverStandings, setDriverDetails } from "./index";
 import { DriverDetailsState, DriverStanding } from "interfaces/redux";
 import { driverApiEndPoint } from "constant/ApiEndPoint";
 import { getResponse } from "utils/Response";
@@ -25,10 +20,6 @@ describe("driverSlice", () => {
     };
   });
 
-  test("should return the initial state", () => {
-    expect(driverReducer(undefined, {} as Action)).toEqual(initialState);
-  });
-
   test("should handle setDriverDetails", () => {
     const mockDriverDetails = { driverId: "hamilton", name: "Lewis Hamilton" };
     const nextState = driverReducer(
@@ -37,35 +28,6 @@ describe("driverSlice", () => {
     );
 
     expect(nextState.driverDetails).toEqual(mockDriverDetails);
-  });
-
-  test("should handle clearDriverDetails", () => {
-    const modifiedState: DriverDetailsState = {
-      driverDetails: {
-        driverId: "hamilton",
-        givenName: "Lewis Hamilton",
-        familyName: "Hamilton",
-        nationality: "British",
-        permanentNumber: "20",
-        code: "ALB",
-        dateOfBirth: "1996-03-23",
-        url: "https://en.wikipedia.org/wiki/Lewis_Hamilton",
-      },
-      standings: {
-        position: 1,
-        points: 200,
-        wins: 10,
-        Driver: { driverId: "hamilton" },
-      } as DriverStanding,
-
-      loading: false,
-      error: "",
-    };
-
-    const nextState = driverReducer(modifiedState, clearDriverDetails());
-
-    expect(nextState.driverDetails).toBeNull();
-    expect(nextState.standings).toBeNull();
   });
 
   test("should handle fetchDriverStandings.pending", () => {

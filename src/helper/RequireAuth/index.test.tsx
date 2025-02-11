@@ -5,7 +5,11 @@ import { renderWithProviders } from "utils/RenderWithProviders";
 
 jest.mock("utils/GetCurrentUser");
 
-jest.mock("layout/unauthorized", () => () => <div>Unauthorized Page</div>);
+jest.mock("layout/unauthorized", () => {
+  const MockUnauthorized = () => <div>Unauthorized Page</div>;
+  MockUnauthorized.displayName = "MockUnauthorized";
+  return MockUnauthorized;
+});
 
 describe("RequireAuth Component", () => {
   afterEach(() => {

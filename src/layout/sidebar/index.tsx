@@ -22,6 +22,7 @@ import {
   StyledDrawer,
 } from "./index.style";
 import { loginRoute } from "constant/RoutesEndPoint";
+import { LOGOUT } from "constant/TitleText";
 
 const Sidebar = ({ open }: SidebarProps) => {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ const Sidebar = ({ open }: SidebarProps) => {
             <ListItemIcon>
               <LogoutIcon />
             </ListItemIcon>
-            <ListItemTextarea primary="Logout" />
+            <ListItemTextarea primary={LOGOUT} />
           </LogoutButton>
         </ListItemBox>
       </ListContainer>
