@@ -21,7 +21,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 5. Run tests (if applicable):
    `npm test` or `yarn test`
 6. Build for production:
-   npm run build
+   `npm run build` or `yarn build`
 
 ---
 

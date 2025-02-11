@@ -1,10 +1,10 @@
+import { MemoryRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { render, RenderOptions } from "@testing-library/react";
 import { AllTheProvidersProps } from "interfaces/global";
 import { ReactElement } from "react";
-import { Provider } from "react-redux";
-import { MemoryRouter } from "react-router-dom";
 import { store } from "redux/store";
+import { Provider } from "react-redux";
 
 const AllTheProviders = ({ children, customStore }: AllTheProvidersProps) => {
   return (

@@ -61,6 +61,8 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/axios-mock-adapter": "^1.10.4",
+    "@types/react-router-dom": "^5.3.3",
+    "axios-mock-adapter": "^2.1.0"
   }
 }

@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
 import { loginRoute } from "constant/RoutesEndPoint";
-import { errorNotification } from "./Notification";
+import { errorNotification } from "helper/Notification";
 
 const baseURL = "https://api.jolpi.ca/ergast/f1/2024"; // Replace with your actual base URL
 
