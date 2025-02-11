@@ -14,7 +14,7 @@ describe("driverSlice", () => {
   beforeEach(() => {
     initialState = {
       isLoading: false,
-      data: null,
+      data: [],
       error: "",
     };
   });

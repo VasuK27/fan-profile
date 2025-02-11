@@ -21,7 +21,7 @@ export interface DriverListResponse {
 }
 export interface DriverState {
   isLoading: boolean;
-  data: DriverListResponse | null;
+  data: DriverListResponse[];
   error: string;
 }
 

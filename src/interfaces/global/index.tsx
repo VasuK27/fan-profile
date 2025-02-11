@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { DriverData } from "interfaces/redux";
 import { ReactNode } from "react";
 
 export interface GetResponseParams {
@@ -42,4 +43,9 @@ export interface DividerProps {
 export interface UserDetailsProps {
   username: string;
   email: string;
+}
+
+export interface DriverDetailCardProps {
+  driver: DriverData;
+  setOpen: (open: boolean) => void;
 }
