@@ -35,5 +35,5 @@ export interface DriverDetailsState {
   driverDetails: DriverData | null;
   standings: DriverStanding | null;
   loading: boolean;
-  error: string;
+  error: string | undefined;
 }

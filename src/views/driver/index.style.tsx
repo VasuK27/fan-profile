@@ -16,7 +16,8 @@ export const StyledCard = styled(Card)(() => ({
 }));
 
 export const WikipediaButton = styled(Language)(() => ({
-  color: "var(--lightPurple)",
+  color: "var(--orange)",
+  cursor: "pointer",
 }));
 
 export const StyledMenuIconButton = styled(IconButton)(() => ({
@@ -51,7 +52,7 @@ export const ChipText = styled(Chip)(() => ({
   fontSize: "12px",
   mr: 1,
   backgroundColor: "var(--lightPink)",
-  color: "var(--lightPurple)",
+  color: "var(--orange)",
   borderRadius: "6px",
   ".MuiChip-label": {
     padding: "0px 8px",
@@ -60,7 +61,7 @@ export const ChipText = styled(Chip)(() => ({
 
 export const StyledPagination = styled(Pagination)(() => ({
   "& .Mui-selected": {
-    backgroundColor: "var(--lightPurple) !important",
+    backgroundColor: "var(--orange) !important",
     color: "#fff !important",
   },
 }));

@@ -1,5 +1,12 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import { Avatar, Box, Toolbar, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Sidebar from "layout/sidebar";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
@@ -15,6 +22,10 @@ import {
 const Header = () => {
   const [open, setOpen] = useState(true);
 
+  // Inside your component:
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+
   // Toggle the drawer open/close
   const toggleDrawer = () => {
     setOpen((prev) => !prev);
@@ -26,14 +37,16 @@ const Header = () => {
       <AppBar position="fixed">
         <Toolbar>
           {/* Left - Menu Icon */}
-          <StyledMenuIconButton
-            color="inherit"
-            aria-label="toggle drawer"
-            onClick={toggleDrawer}
-            edge="start"
-          >
-            <MenuIcon />
-          </StyledMenuIconButton>
+          {!isSmallScreen && (
+            <StyledMenuIconButton
+              color="inherit"
+              aria-label="toggle drawer"
+              onClick={toggleDrawer}
+              edge="start"
+            >
+              <MenuIcon />
+            </StyledMenuIconButton>
+          )}
 
           {/* Right - User Info */}
           <UserInfo>

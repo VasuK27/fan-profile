@@ -36,14 +36,14 @@ export const StyledDrawer = styled(Drawer)<SidebarDrawerProps>(
 
 export const SidebarItemButton = styled(ListItemButton)<{ isActive?: boolean }>(
   ({ isActive }) => ({
-    backgroundColor: isActive ? "var(--lightPurple)" : "var(--black)",
+    backgroundColor: isActive ? "var(--orange)" : "var(--black)",
     borderRadius: "8px",
     margin: "0px 10px",
     color: isActive ? "var(--white)" : "var(--lightBlack)",
     marginRight: "5px !important",
     marginTop: "8px",
     "&:hover": {
-      backgroundColor: "var(--lightPurple)",
+      backgroundColor: "var(--orange)",
     },
   })
 );
@@ -51,7 +51,7 @@ export const SidebarItemButton = styled(ListItemButton)<{ isActive?: boolean }>(
 export const DividerBox = styled(Drawer)<DividerProps>(({ isMenuOpen }) => ({
   width: isMenuOpen ? "6px" : "0px",
   height: "45px",
-  backgroundColor: "var(--lightPurple)",
+  backgroundColor: "var(--orange)",
   borderRadius: "8px",
 }));
 
@@ -70,6 +70,7 @@ export const LogoutButton = styled(ListItemButton)({
 
 export const MenuIcon = styled(ListItemIcon)<{ isActive?: boolean }>(
   ({ isActive }) => ({
+    minWidth: "39px !important",
     color: isActive ? "var(--white)" : "var(--lightBlack)",
   })
 );

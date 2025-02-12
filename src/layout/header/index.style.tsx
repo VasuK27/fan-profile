@@ -6,7 +6,7 @@ export const AppBar = styled(MuiAppBar)<MuiAppBarProps>(() => ({
   width: "100%",
   transition: "all 0.3s ease-in-out",
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
-  backgroundColor: "var(--lightPurple)",
+  backgroundColor: "var(--orange)",
   zIndex: 1201,
 }));
 
@@ -49,5 +49,11 @@ export const Main = styled("main", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  padding: theme.spacing(3),
+
+  [theme.breakpoints.down("xl")]: {
+    padding: "24px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "10px 0px",
+  },
 }));

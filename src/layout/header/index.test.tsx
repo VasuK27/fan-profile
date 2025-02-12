@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { renderWithProviders } from "utils/RenderWithProviders";
 import Header from ".";
 import { getCurrentUser } from "utils/GetCurrentUser";
@@ -20,7 +20,10 @@ describe("Header component", () => {
   });
 
   test("renders menu icon", () => {
-    expect(screen.getByLabelText("toggle drawer")).toBeInTheDocument();
+    const drawerIcon = screen.getByLabelText("toggle drawer");
+    expect(drawerIcon).toBeInTheDocument();
+    fireEvent.click(drawerIcon);
+    expect(screen.getByText(/Logout/i)).toBeInTheDocument();
   });
 
   test("renders user avatar with correct initial", () => {

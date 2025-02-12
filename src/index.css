@@ -13,7 +13,7 @@ body {
 }
 
 :root {
-  --lightPurple: #dd5e60;
+  --orange: #dd5e60;
   --errorDarkRed: #c33232;
   --white: #fff;
   --silver: #bdbdbd50;
@@ -37,10 +37,10 @@ body {
 }
 
 .MuiTooltip-tooltip {
-  background-color: var(--lightPurple) !important;
+  background-color: var(--orange) !important;
   color: "white",
 }
 
 .MuiTooltip-arrow {
-  color: var(--lightPurple) !important
+  color: var(--orange) !important
 }

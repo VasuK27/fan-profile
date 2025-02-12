@@ -1,4 +1,4 @@
-import { Box, Grid2, IconButton } from "@mui/material";
+import { Box, Grid2, Typography } from "@mui/material";
 import MainLoading from "components/mainLoading";
 import { EMAIL } from "constant/InputLabel";
 import {
@@ -21,11 +21,9 @@ import { FC, ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "utils/GetCurrentUser";
 import { RootState } from "redux/store";
-import { WikipediaButton } from "../index.style";
 import { TitleText } from "./index.style";
 import TitleAndContent from "components/titleAndContent";
-
-// Reusable component to display individual detail rows
+import { WikipediaButton } from "../index.style";
 
 // Defining user details using current user information
 const userDetails = [
@@ -55,15 +53,22 @@ const DriverDetails: FC = () => {
   return (
     <Box>
       {loading ? (
-        <MainLoading /> // Show loading spinner when data is loading
+        <MainLoading />
       ) : (
         <>
-          <TitleText>{DRIVER_DETAILS}</TitleText>
+          <Typography
+            fontSize="20px"
+            fontWeight={700}
+            color="var(--orange)"
+            margin={{ xs: "0px 10px 10px 10px", md: "0px 16px 16px 16px" }}
+          >
+            {DRIVER_DETAILS}
+          </Typography>
 
           {/* Displaying Driver Details */}
           <Grid2
             container
-            mx={2}
+            mx={{ xs: 1, sm: 2 }}
             spacing={4}
             padding="16px"
             borderRadius="8px"
@@ -97,7 +102,7 @@ const DriverDetails: FC = () => {
                 boxShadow="0 2px 10px rgba(0, 0, 0, 0.1)"
                 padding="16px"
                 mb={index !== standingsDetails.Constructors.length - 1 ? 1 : 0}
-                mx={2}
+                mx={{ xs: 1, sm: 2 }}
               >
                 <Grid2 container spacing={4}>
                   {renderDetails([
@@ -110,14 +115,13 @@ const DriverDetails: FC = () => {
                     {
                       title: MORE_INFO,
                       content: (
-                        <IconButton
-                          component="a"
+                        <a
                           href={constructor.url}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           <WikipediaButton />
-                        </IconButton>
+                        </a>
                       ),
                     },
                   ])}
@@ -131,7 +135,7 @@ const DriverDetails: FC = () => {
           {/* Displaying user details */}
           <Grid2
             mb={1}
-            mx={2}
+            mx={{ xs: 1, sm: 2 }}
             container
             spacing={4}
             padding="16px"

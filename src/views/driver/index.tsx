@@ -97,7 +97,15 @@ const Driver: FC = () => {
 
   // Rendering driver details inside a card
   const renderDriverDetails = (driver: DriverData) => {
-    const { familyName, driverId, permanentNumber, code } = driver;
+    const {
+      familyName,
+      driverId,
+      permanentNumber,
+      code,
+      givenName,
+      nationality,
+      url,
+    } = driver;
 
     const driverDetails = [
       { label: FAMILY_NAME, value: familyName || "-" },
@@ -107,7 +115,7 @@ const Driver: FC = () => {
     ];
 
     return (
-      <Grid2 size={{ xs: 12, sm: 6, lg: 4, xl: 3 }} key={driver.driverId}>
+      <Grid2 size={{ xs: 12, sm: 6, lg: 4, xl: 3 }} key={driverId}>
         <Box boxShadow="0px 2px 8px rgba(0, 0, 0, 0.1)" borderRadius="20px">
           <Box padding="15px 16px 6px 16px">
             {/* Displaying driver's name and nationality */}
@@ -123,10 +131,10 @@ const Driver: FC = () => {
                   fontSize="18px"
                   color="var(--lightBlack)"
                 >
-                  {driver.givenName}
+                  {givenName}
                 </Typography>
                 <Box ml={1} display="flex" alignItems="center">
-                  <ChipText label={driver.nationality} />
+                  <ChipText label={nationality} />
                 </Box>
               </Box>
               <StyledMenuIconButton
@@ -176,7 +184,7 @@ const Driver: FC = () => {
             >
               <IconButton
                 component="a"
-                href={driver.url}
+                href={url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -185,7 +193,7 @@ const Driver: FC = () => {
               <Typography fontSize="14px" color="var(--lightGray)">
                 <WikipediaLink
                   data-testid="wikipedia_link"
-                  href={driver.url}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -200,30 +208,38 @@ const Driver: FC = () => {
   };
 
   return (
-    <Box p={3}>
-      <Typography mb={2} fontWeight={600} fontSize="20px">
-        {DRIVERS}
-      </Typography>
+    <Box p={{ xs: 0, xl: 3 }}>
+      <Box mb={{ xs: 2, sm: 2 }} mx={1} mt={{ xs: 5, sm: 4 }}>
+        <Typography
+          mb={2}
+          fontWeight={600}
+          fontSize={{ xs: "18px", sm: "20px" }}
+        >
+          {DRIVERS}
+        </Typography>
 
-      <Search
-        placeholder={SEARCH_BY_NAME}
-        searchValue={searchTerm}
-        handleSearchOnChange={handleSearchChange}
-      />
+        <Search
+          placeholder={SEARCH_BY_NAME}
+          searchValue={searchTerm}
+          handleSearchOnChange={handleSearchChange}
+        />
+      </Box>
 
       {/* Rendering filtered drivers or loading state */}
-      <Grid2 container spacing={3} mt={3}>
-        <ConditionalContent
-          isLoading={isLoading}
-          data={displayedDrivers}
-          noDataMessage={NO_DRIVER_FOUND}
-          renderItem={(driver) => renderDriverDetails(driver)}
-        />
-      </Grid2>
+      <Box height="65vh" sx={{ overflowY: "scroll" }} px={1}>
+        <Grid2 container spacing={3} mt={1} mb={1}>
+          <ConditionalContent
+            isLoading={isLoading}
+            data={displayedDrivers}
+            noDataMessage={NO_DRIVER_FOUND}
+            renderItem={(driver) => renderDriverDetails(driver)}
+          />
+        </Grid2>
+      </Box>
 
       {/* Pagination for displaying driver pages */}
       {displayedDrivers.length !== 0 && !isLoading && (
-        <Box display="flex" justifyContent="center" mt={4}>
+        <Box display="flex" justifyContent="center" mt={2}>
           <StyledPagination
             count={totalPages}
             page={page}

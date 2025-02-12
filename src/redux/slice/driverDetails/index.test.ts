@@ -129,3 +129,50 @@ describe("driverSlice", () => {
     );
   });
 });
+
+test("should return null if driver standings not found", async () => {
+  const mockResponse = {
+    response: {
+      data: {
+        MRData: {
+          StandingsTable: {
+            StandingsLists: [
+              {
+                DriverStandings: [
+                  {
+                    Driver: { driverId: "verstappen" }, // No matching driver
+                    position: 1,
+                    points: 400,
+                    wins: 10,
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+    },
+  };
+
+  (getResponse as jest.Mock).mockResolvedValueOnce(mockResponse);
+
+  const dispatch = jest.fn();
+  const getState = jest.fn();
+
+  await fetchDriverStandings("hamilton")(dispatch, getState, undefined);
+
+  expect(getResponse).toHaveBeenCalledWith({
+    apiEndPoint: driverApiEndPoint.GET_DRIVER_DETAILS,
+  });
+
+  expect(dispatch).toHaveBeenCalledWith(
+    expect.objectContaining({ type: fetchDriverStandings.pending.type })
+  );
+
+  expect(dispatch).toHaveBeenCalledWith(
+    expect.objectContaining({
+      type: fetchDriverStandings.fulfilled.type,
+      payload: null,
+    })
+  );
+});

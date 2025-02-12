@@ -46,7 +46,7 @@ const driverSlice = createSlice({
         state.standings = action.payload;
       })
       .addCase(fetchDriverStandings.rejected, (state, action) => {
-        state.error = action.error.message || "Failed to fetch standings";
+        state.error = action.error.message;
         state.loading = false;
       });
   },

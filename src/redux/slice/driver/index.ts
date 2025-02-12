@@ -27,7 +27,7 @@ export const fetchDriverList = createAsyncThunk<DriverListResponse>(
 
       return response.response.data;
     } catch (error: any) {
-      return rejectWithValue(error.message || "Failed to fetch driver data");
+      return rejectWithValue(error.message);
     }
   }
 );

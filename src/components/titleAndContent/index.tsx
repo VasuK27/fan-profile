@@ -1,15 +1,14 @@
 import { Box, Typography } from "@mui/material";
 import { TitleAndContentProps } from "interfaces/custom";
 import { FC } from "react";
+import { ContentText } from "./index.style";
 
 const TitleAndContent: FC<TitleAndContentProps> = ({ title, content }) => (
-  <Box mb={2}>
+  <Box>
     <Typography fontSize="14px" fontWeight={500} color="var(--lightGray)">
       {title}
     </Typography>
-    <Typography fontSize="16px" color="var(--textGray)" fontWeight={600}>
-      {content}
-    </Typography>
+    <ContentText>{content}</ContentText>
   </Box>
 );
 export default TitleAndContent;

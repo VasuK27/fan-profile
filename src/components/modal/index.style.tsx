@@ -6,14 +6,18 @@ export const StyledModalBox = styled(Box)(({ theme }) => ({
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 650,
   backgroundColor: "var(--white)",
   padding: "20px",
   borderRadius: "16px",
   overflowY: "auto",
+  width: 650,
+
   [theme.breakpoints.down("md")]: {
-    maxWidth: "500px",
-    margin: "0px 10px",
+    maxWidth: "90%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "85%",
+    padding: "14px",
   },
 }));
 
@@ -27,7 +31,7 @@ export const ModalFirstLabelStyled = styled(Typography)(() => ({
 export const ModalSecondLabelStyled = styled(Typography)(() => ({
   width: "12px",
   height: "32px",
-  backgroundColor: "var(--lightPurple)",
+  backgroundColor: "var(--orange)",
   marginRight: "16px",
   borderRadius: "4px",
 }));

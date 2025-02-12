@@ -23,7 +23,6 @@ export const SearchStyledInputBase = styled(InputBase)(() => ({
   "& .MuiInputBase-input": {
     padding: "8px 8px 8px 0px",
     paddingLeft: `calc(1em + 4px)`,
-    width: "300px",
   },
 }));
 

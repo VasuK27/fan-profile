@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { getCurrentUser } from "utils/GetCurrentUser";
 import CheckAuth from ".";
+import { driverRoute } from "constant/RoutesEndPoint";
 
 jest.mock("utils/GetCurrentUser");
 
@@ -57,4 +58,26 @@ describe("CheckAuth Component", () => {
 
     expect(screen.getByText("Public Route")).toBeInTheDocument();
   });
+});
+
+test("should navigate to driver route when user is logged in", () => {
+  (getCurrentUser as jest.Mock).mockReturnValue({ username: "testUser" });
+
+  render(
+    <MemoryRouter initialEntries={["/"]}>
+      <Routes>
+        <Route element={<CheckAuth />}>
+          <Route path="/" element={<div>Public Route</div>} />
+        </Route>
+        <Route
+          path={driverRoute.DRIVER}
+          element={<div>Driver Dashboard</div>}
+        />
+      </Routes>
+    </MemoryRouter>
+  );
+
+  expect(screen.queryByText("Public Route")).not.toBeInTheDocument();
+
+  expect(screen.getByText("Driver Dashboard")).toBeInTheDocument();
 });

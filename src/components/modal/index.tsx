@@ -25,10 +25,11 @@ const Modal: FC<ReusableModalProps> = ({
           display="flex"
           justifyContent="space-between"
           alignItems="center"
+          mb={1.5}
         >
           <ModalFirstLabelStyled>
             {isGrayBlock && <ModalSecondLabelStyled />}
-            <Typography variant="h5" fontWeight={600}>
+            <Typography fontSize={{ xs: "20px", sm: "24px" }} fontWeight={600}>
               {label}
             </Typography>
           </ModalFirstLabelStyled>
